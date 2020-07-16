@@ -5,10 +5,33 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet author="norah" id="02252020-unique-id">
-        <addColumn tableName="users">
-            <column name="address" type="varchar(255)" />
-        </addColumn>
+
+    <changeSet author="liquibase-docs" id="addAutoIncrement-example">
+        <addAutoIncrement catalogName="cat"
+                          columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="100"
+                          tableName="user"/>
+    </changeSet>
+
+    <changeSet author="norah" id="02252020-add-user-table">
+        <createTable tableName="user">
+            <column name="id" type="bigint"
+                    autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nin" type="nvarchar(10)">
+                <constraints nullable="false" />
+            </column>
+            <column name="first_name" type="nvarchar(MAX)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="nvarchar(MAX)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
     </changeSet>
 
 </databaseChangeLog>
