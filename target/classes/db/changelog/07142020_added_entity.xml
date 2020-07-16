@@ -6,20 +6,11 @@
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet author="liquibase-docs" id="addAutoIncrement-example">
-        <addAutoIncrement catalogName="cat"
-                          columnDataType="int"
-                          columnName="id"
-                          incrementBy="1"
-                          schemaName="public"
-                          startWith="100"
-                          tableName="user"/>
-    </changeSet>
 
     <changeSet author="norah" id="02252020-add-user-table">
         <createTable tableName="user">
             <column name="id" type="bigint"
-                    autoIncrement="${autoIncrement}">
+                    autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="nin" type="nvarchar(10)">
