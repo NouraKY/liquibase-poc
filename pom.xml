@@ -6,8 +6,8 @@
     <properties>
 
         <db.url>jdbc:sqlserver://localhost:1433;databasename=liquibase_db</db.url>
-        <db.username>galofisan</db.username>
-        <db.password>Leader@123</db.password>
+        <db.username>devops</db.username>
+        <db.password>devops</db.password>
         <java.version>1.8</java.version>
 
 
@@ -47,7 +47,7 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <configuration>
-                    <changeLogFile>${basedir}/src/main/resources/db/changelog/liquibase/db.changelog-master.xml
+                    <changeLogFile>${basedir}/src/main/resources/db/changelog/db.changelog-master.xml
                     </changeLogFile>
                     <propertyFile>${basedir}/src/main/resources/liquibase.properties</propertyFile>
                     <url>${db.url}</url>
