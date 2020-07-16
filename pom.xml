@@ -5,18 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
 
-   <!--     <db.url>jdbc:sqlserver://localhost:1433;database=devops</db.url>
+        <db.url>jdbc:sqlserver://localhost:1433;databasename=liquibase_db</db.url>
         <db.username>devops</db.username>
-        <db.password>Aa12345678</db.password>-->
-
-            <liquibase.url>jdbc:sqlserver://localhost:1433;database=devops</liquibase.url>
-            <liquibase.driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</liquibase.driver>
-            <liquibase.username>devops</liquibase.username>
-            <liquibase.password>Aa12345678</liquibase.password>
-
-
+        <db.password>devops</db.password>
         <java.version>1.8</java.version>
+
+
     </properties>
+
 
     <groupId>org.example</groupId>
     <artifactId>liquibase-poc</artifactId>
@@ -28,82 +24,60 @@
                 <artifactId>liquibase-core</artifactId>
                 <version>3.8.8</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.microsoft.sqlserver</groupId>
-                <artifactId>mssql-jdbc</artifactId>
-                <version>7.4.1.jre8</version>
-            </dependency>
-
           <!--  <dependency>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.8.8</version>
-            </dependency>
-            <dependency>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.8.8</version>
+                <version>2.0.5</version>
                 <type>maven-plugin</type>
             </dependency>-->
 
         </dependencies>
-
     </dependencyManagement>
 
 
     <build>
-        <pluginManagement>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-plugin-plugin</artifactId>
-            <version>3.3</version>
-        </plugin>
-    <plugin>
-        <groupId>org.liquibase</groupId>
-        <artifactId>liquibase-maven-plugin</artifactId>
-        <version>3.5.3</version>
-        <configuration>
-            <changeLogFile>${basedir}/src/main/resources/db/changelog/liquibase/db.changelog-master.xml
-            </changeLogFile>
-            <propertyFile>${basedir}/src/main/resources/application.properties</propertyFile>
-            <url>${liquibase.url}</url>
-            <username>${liquibase.username}</username>
-            <password>${liquibase.password}</password>
-            <driver>${liquibase.driver}</driver>
-        </configuration>
-        <executions>
-            <execution>
-                <phase>process-resources</phase>
-                <goals>
-                    <goal>update</goal>
-                </goals>
-            </execution>
-        </executions>
-        <dependencies>
-            <dependency>
-                <groupId>com.microsoft.sqlserver</groupId>
-                <artifactId>mssql-jdbc</artifactId>
-                <version>7.4.1.jre8</version>
-            </dependency>
-            <dependency>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-core</artifactId>
-                <version>3.8.8</version>
-            </dependency>
-            <dependency>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.3</version>
+            </plugin>
+            <plugin>
+                <version>3.5.3</version>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.8.8</version>
-                <type>maven-plugin</type>
-            </dependency>
+                <configuration>
+                    <changeLogFile>${basedir}/src/main/resources/db/changelog/db.changelog-master.xml
+                    </changeLogFile>
+                    <propertyFile>${basedir}/src/main/resources/liquibase.properties</propertyFile>
+                    <url>${db.url}</url>
+                    <username>${db.username}</username>
+                    <password>${db.password}</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.microsoft.sqlserver</groupId>
+                        <artifactId>mssql-jdbc</artifactId>
+                        <version>8.2.2.jre8</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>3.8.8</version>
+                        <type>maven-plugin</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
-        </dependencies>
-    </plugin>
-    </plugins>
-    </pluginManagement>
-
-</build>
 
 </project>
