@@ -3,6 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <properties>
+
+        <db.url>jdbc:sqlserver://localhost:1433;database=devops</db.url>
+        <db.username>devops</db.username>
+        <db.password>Aa12345678</db.password>
+
+
+        <java.version>1.8</java.version>
+    </properties>
 
     <groupId>org.example</groupId>
     <artifactId>liquibase-poc</artifactId>
@@ -15,5 +24,24 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <configuration>
+            <changeLogFile>${basedir}/src/main/resources/db/changelog/liquibase/db.changelog-master.xml
+            </changeLogFile>
+            <propertyFile>${basedir}/src/main/resources/config/application.yml</propertyFile>
+            <url>${db.url}</url>
+            <username>${db.username}</username>
+            <password>${db.password}</password>
+        </configuration>
+    </plugin>
+    </plugins>
+    </build>
+
 
 </project>
