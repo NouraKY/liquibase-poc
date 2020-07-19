@@ -1,16 +1,16 @@
-
 pipeline{
   agent {
-  docker { image 'maven:3-openjdk-8:ubuntu:18.04' }
+  docker { image 'maven:3-alpine' }
 }
   stages {
     stage("Build"){
       steps {
         echo "inside build step"
-        sh "mvn package"
+      //  sh "mvn package"
+              sh 'mvn -v'
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
           echo "inside failure"
-          sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
+       //   sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
         }
       }
     }
