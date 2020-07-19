@@ -6,7 +6,9 @@ pipeline{
 
   stages {
     stage("Build"){
-      steps {
+   agent { label buildagent }
+
+  steps {
   withDockerContainer(image: builderImage, args: m2Volume) {
   sh 'mvn -v'
   sh 'mvn package' }
