@@ -1,5 +1,5 @@
 
-pipeline{
+pipline{
   agent none
   stages {
     stage("Build"){
