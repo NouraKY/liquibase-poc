@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
 
-        <db.url>jdbc:sqlserver://localhost:1433;databasename=liquibase_db</db.url>
+        <db.url>jdbc:sqlserver://localhost:1433;databasename=devops</db.url>
         <db.username>devops</db.username>
-        <db.password>devops</db.password>
+        <db.password>Aa123456789</db.password>
         <java.version>1.8</java.version>
 
 
