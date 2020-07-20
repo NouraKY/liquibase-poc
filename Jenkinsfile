@@ -1,7 +1,7 @@
 def builderImage = 'nexus.elm.sa:8083/elm-core/maven:3.6-jdk-8-slim-corev0.2.9'
 def m2Volume = '-v m2:/root/.m2/repository -u root'
 pipeline {
-    agent none
+    agent any
     stages {
         stage("Build") {
             steps {
