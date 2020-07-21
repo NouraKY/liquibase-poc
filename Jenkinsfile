@@ -14,6 +14,8 @@ pipeline{
   steps {
 
         echo "inside build step"
+        sh "mvn package"
+        sh 'mvn -v'
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
           echo "inside failure"
        //   sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
