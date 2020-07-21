@@ -1,16 +1,10 @@
-
 pipeline{
- /*agent {
-         docker {
-             image 'maven:3-alpine'
-             args '-v $HOME/.m2:/root/.m2'
-         }
-         }*/
-  agent any
+  agent any,
+  tools {
+  maven 'Maven 3.2.1'
+}
   stages {
     stage("Build"){
-
-
   steps {
 
         echo "inside build step"
