@@ -1,11 +1,12 @@
 
 pipeline{
- agent {
+ /*agent {
          docker {
              image 'maven:3-alpine'
              args '-v $HOME/.m2:/root/.m2'
          }
-         }
+         }*/
+  agent any
   stages {
     stage("Build"){
 
@@ -13,8 +14,8 @@ pipeline{
   steps {
 
         echo "inside build step"
-      //  sh "mvn package"
-              sh 'mvn -v'
+        sh "mvn package"
+        sh 'mvn -v'
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
           echo "inside failure"
        //   sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
