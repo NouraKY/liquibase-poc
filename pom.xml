@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
 
-        <db.url>jdbc:sqlserver://localhost:1433;databasename=devops</db.url>
-        <db.username>devops</db.username>
-        <db.password>Aa123456789</db.password>
+        <!--<db.url>jdbc:sqlserver://localhost:1433;databasename=devops</db.url>-->
+<!--        <db.username>devops</db.username>
+        <db.password>devops</db.password>-->
         <java.version>1.8</java.version>
 
 
@@ -52,9 +52,9 @@
                     <changeLogFile>${basedir}/src/main/resources/db/changelog/db.changelog-master.xml
                     </changeLogFile>
                     <propertyFile>${basedir}/src/main/resources/liquibase.properties</propertyFile>
-                    <url>${db.url}</url>
+                   <!-- <url>${db.url}</url>
                     <username>${db.username}</username>
-                    <password>${db.password}</password>
+                    <password>${db.password}</password>-->
                 </configuration>
                 <executions>
                     <execution>
