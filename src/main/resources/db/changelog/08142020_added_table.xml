@@ -7,8 +7,8 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="norah" id="02252020-add-user-table">
-        <createTable tableName="user">
+    <changeSet author="Gadah" id="08142020_added_table">
+        <createTable tableName="Norah">
             <column name="id" type="bigint"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
