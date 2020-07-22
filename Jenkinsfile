@@ -1,3 +1,4 @@
+def dbTime =''
 pipeline {
     agent any
     tools {
@@ -7,10 +8,10 @@ pipeline {
         stage("Build") {
             steps {
                 script{
-                    def now = new Date()
-                    println now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
+                    dbTime = new Date()
+                    println dbTime.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
                 }
-                sh "echo the time is: "
+                sh "echo the time is: ${dbTime} "
 
                 echo "inside build step"
                 sh "mvn package"
