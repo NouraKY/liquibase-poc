@@ -6,8 +6,12 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                def now = new Date()
-                println now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
+                script{
+                    def now = new Date()
+                    println now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
+                }
+                sh "echo the time is: ${now}"
+
                 echo "inside build step"
                 sh "mvn package"
             }
