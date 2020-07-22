@@ -8,8 +8,9 @@ pipeline {
         stage("Build") {
             steps {
                 script{
-                    dbTime = new Date()
-                    println dbTime.format("yyyy-MM-dd'T'HH:mm:ss")
+                   def now = new Date()
+                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                    println now.format("yyyy-MM-dd'T'HH:mm:ss")
                 }
                 sh "echo the time is: ${dbTime} "
 
