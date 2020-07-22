@@ -17,7 +17,7 @@ success { echo 'This will run only if successful' }
 failure {
   input message: 'is there a new DB script to RollBack?', ok: 'Yes'
   echo "inside failure"
-  sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"   input message: 'Should we deploy the CDx project on Production environment?', ok: 'Yes, we should.', submitter: 'melhafi'
+  sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
 
 }
 }
