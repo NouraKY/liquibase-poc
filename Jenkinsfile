@@ -10,7 +10,7 @@ pipeline {
                     def now = new Date()
                     println now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
                 }
-                sh "echo the time is: ${now}"
+                sh "echo the time is: "
 
                 echo "inside build step"
                 sh "mvn package"
