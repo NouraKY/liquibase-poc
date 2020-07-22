@@ -9,12 +9,13 @@ pipeline {
             steps {
                 script{
                     dbTime = new Date()
-                    println dbTime.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
+                    println dbTime.format("yyyy-MM-dd'T'HH:mm:ss")
                 }
                 sh "echo the time is: ${dbTime} "
 
                 echo "inside build step"
                 sh "mvn package"
+
             }
             post {
                 always { echo 'This will always run' }
@@ -22,7 +23,8 @@ pipeline {
                 failure {
                     input message: 'Build FAILED ! is there a new DB script to rollback?', ok: 'Yes'
                     echo "inside failure"
-                    sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
+                   sh " mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
+                   // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
                 }
             }
         }
