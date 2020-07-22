@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                echo "TimeStamp: ${currentBuild.startTimeInMillis}"
+                def now = new Date()
+                println now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('UTC'))
                 echo "inside build step"
                 sh "mvn package"
             }
