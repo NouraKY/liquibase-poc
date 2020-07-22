@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage("Build") {
             steps {
+                echo "TimeStamp: ${currentBuild.startTimeInMillis}"
                 echo "inside build step"
                 sh "mvn package"
             }

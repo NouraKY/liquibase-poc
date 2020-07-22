@@ -7,8 +7,8 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="Gadah" id="08142020_added_table">
-        <createTable tableName="Norah">
+    <changeSet author="norah" id="02252020-add-user-table">
+        <createTable tableName="user">
             <column name="id" type="bigint"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
@@ -25,26 +25,8 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="Gadah" id="08142021_added_table">
-        <createTable tableName="Norah2">
-            <column name="id" type="bigint"
-                    autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="nin" type="nvarchar(10)">
-                <constraints nullable="false" />
-            </column>
-            <column name="first_name" type="nvarchar(MAX)">
-                <constraints nullable="false" />
-            </column>
-            <column name="last_name" type="nvarchar(MAX)">
-                <constraints nullable="false" />
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet author="Gadah" id="08142023_added_table">
-        <createTable tableName="Norah3">
+    <changeSet author="norah" id="0225ddd2020-add-user-table">
+        <createTable tableName="user2">
             <column name="id" type="bigint"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />

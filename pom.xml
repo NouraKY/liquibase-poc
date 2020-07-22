@@ -9,6 +9,8 @@
         <db.username>devops</db.username>
         <db.password>Aa123456789</db.password>
         <java.version>1.8</java.version>
+        <timestamp>${maven.build.timestamp}</timestamp>
+         <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss</maven.build.timestamp.format>
 
 
     </properties>
