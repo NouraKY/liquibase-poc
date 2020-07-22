@@ -15,7 +15,7 @@ post {
   always { echo 'This will always run' }
 success { echo 'This will run only if successful' }
 failure {
-  input message: 'is there a new DB script to RollBack?', ok: 'Yes'
+  input message: 'Build FAILED ! is there a new DB script to rollback?', ok: 'Yes'
   echo "inside failure"
   sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
 
