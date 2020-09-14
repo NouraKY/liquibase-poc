@@ -1,23 +1,32 @@
-/*def builderImage = 'nexus.elm.sa:8083/elm-core/maven:3.6-jdk-8-slim-corev0.2.9'
-def m2Volume = '-v m2:/root/.m2/repository -u root'*/
-pipeline{
-  docker { image 'node:14-alpine' }
 
-stages {
-    stage("Build"){
-
-  steps {
-  withDockerContainer(image: builderImage, args: m2Volume) {
-  sh "mvn -v"
-  sh "mvn package" }
-        echo "inside build step"
-      //  sh "mvn package"
-              sh 'mvn -v'
-        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          echo "inside failure"
-       //   sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
-        }
-      }
+def dbTime =''
+pipeline {
+    agent any
+    tools {
+        maven 'apache-maven-3.2.1'
     }
-  }
+    stages {
+        stage("Build") {
+            steps {
+                script{
+                   def now = new Date()
+                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                }
+                sh "echo the time is: ${dbTime} "
+                echo "inside build step"
+                sh "mvn package"
+            }
+            post {
+                always { echo 'This will always run' }
+                success { echo 'This will run only if successful' }
+                failure {
+                    //input message: 'Build FAILED ! is there a new DB script to rollback?', ok: 'Yes'
+                    echo "inside failure"
+                    sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
+                   // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
+                }
+            }
+
+        }
+    }
 }
