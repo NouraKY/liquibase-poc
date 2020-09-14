@@ -1,3 +1,4 @@
+
 def dbTime =''
 pipeline {
     agent any
@@ -25,6 +26,7 @@ pipeline {
                    // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
                 }
             }
+
         }
     }
 }
