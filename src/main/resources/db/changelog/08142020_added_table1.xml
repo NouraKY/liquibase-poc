@@ -1,0 +1,18 @@
+<databaseChangeLog>
+ <changeSet>
+        <createTable>
+            <column>
+                <constraints/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet>
+        <createTable>
+            <column>
+                <constraints/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
+
+
