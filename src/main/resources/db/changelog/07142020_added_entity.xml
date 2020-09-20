@@ -16,15 +16,15 @@
             <column name="nin" type="nvarchar(10)">
                 <constraints nullable="false" />
             </column>
-            <column name="first_name" type="nvarchar(MAX)">
+            <column name="first_name" type="nvarchar(50)">
                 <constraints nullable="false" />
             </column>
-            <column name="last_name" type="nvarchar(MAX)">
+            <column name="last_name" type="nvarchar(50)">
                 <constraints nullable="false" />
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="norah" id="022wewe52020-add-user-table">
+    <changeSet author="norah" id="022wewe52020-add-testDb-table">
         <createTable tableName="testDb">
             <column name="id" type="bigint"
                     autoIncrement="true">
@@ -33,10 +33,10 @@
             <column name="nin" type="nvarchar(10)">
                 <constraints nullable="false" />
             </column>
-            <column name="first_name" type="nvarchar(MAX)">
+            <column name="first_name" type="nvarchar(50)">
                 <constraints nullable="false" />
             </column>
-            <column name="last_name" type="nvarchar(MAX)">
+            <column name="last_name" type="nvarchar(50)">
                 <constraints nullable="false" />
             </column>
         </createTable>
