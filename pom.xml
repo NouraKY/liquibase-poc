@@ -29,11 +29,7 @@
             </dependency>
 		<!-- https://mvnrepository.com/artifact/com.ibm.db2/db2jcc_license_cu -->
 		<!-- https://mvnrepository.com/artifact/com.ibm.db2.jcc/db2jcc -->
-<dependency>
-    <groupId>com.ibm.db2.jcc</groupId>
-    <artifactId>db2jcc</artifactId>
-    <version>db2jcc4</version>
-</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
 
@@ -118,11 +114,18 @@
                     </execution>
                 </executions>
                 <dependencies>
+			<!--
                     <dependency>
                         <groupId>com.microsoft.sqlserver</groupId>
                         <artifactId>mssql-jdbc</artifactId>
                         <version>8.2.2.jre8</version>
                     </dependency>
+			-->
+		<dependency>
+    			<groupId>com.ibm.db2.jcc</groupId>
+    			<artifactId>db2jcc</artifactId>
+    			<version>db2jcc4</version>
+		</dependency>
                     <dependency>
                         <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
