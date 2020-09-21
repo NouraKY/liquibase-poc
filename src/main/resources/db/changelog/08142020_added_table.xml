@@ -7,7 +7,7 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="Gadah" id="08142020_added_user_table">
+    <changeSet author="Gadah" id="08142020_added_newuser_table">
         <createTable tableName="user">
             <column name="id" type="bigint"
                     autoIncrement="true">
