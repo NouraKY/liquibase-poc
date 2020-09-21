@@ -7,8 +7,8 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="norah" id="02252020-add-user-table">
-        <createTable tableName="user">
+    <changeSet author="Gadah" id="08142020_added_table">
+        <createTable tableName="Norah">
             <column name="id" type="bigint"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
@@ -16,16 +16,17 @@
             <column name="nin" type="nvarchar(10)">
                 <constraints nullable="false" />
             </column>
-            <column name="first_name" type="nvarchar(50)">
+            <column name="first_name" type="nvarchar(MAX)">
                 <constraints nullable="false" />
             </column>
-            <column name="last_name" type="nvarchar(50)">
+            <column name="last_name" type="nvarchar(MAX)">
                 <constraints nullable="false" />
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="norah" id="022wewe52020-add-testDb-table">
-        <createTable tableName="testDb">
+
+    <changeSet author="Gadah" id="08142021_added_table">
+        <createTable tableName="Norah2">
             <column name="id" type="bigint"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
@@ -33,17 +34,31 @@
             <column name="nin" type="nvarchar(10)">
                 <constraints nullable="false" />
             </column>
-            <column name="first_name" type="nvarchar(50)">
+            <column name="first_name" type="nvarchar(MAX)">
                 <constraints nullable="false" />
             </column>
-            <column name="last_name" type="nvarchar(50)">
+            <column name="last_name" type="nvarchar(MAX)">
                 <constraints nullable="false" />
             </column>
         </createTable>
     </changeSet>
 
-
-
-
+    <changeSet author="Gadah" id="08142023_added_table">
+        <createTable tableName="Norah3">
+            <column name="id" type="bigint"
+                    autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nin" type="nvarchar(10)">
+                <constraints nullable="false" />
+            </column>
+            <column name="first_name" type="nvarchar(MAX)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="nvarchar(MAX)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
 
 </databaseChangeLog>

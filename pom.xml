@@ -3,16 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <properties>
-
-        <db.url>jdbc:sqlserver://localhost:1433;databasename=devops</db.url>
-        <db.username>devops</db.username>
-        <db.password>Aa123456789</db.password>
+   <properties>
+        <db.url>jdbc:db2://minilab.poc_db:50000/devops</db.url>
+        <db.username>db2inst1</db.username>
+        <db.password>db2inst1</db.password>
         <java.version>1.8</java.version>
-
-
     </properties>
-
 
     <groupId>org.example</groupId>
     <artifactId>liquibase-poc</artifactId>
@@ -25,12 +21,17 @@
                 <artifactId>liquibase-core</artifactId>
                 <version>3.8.8</version>
             </dependency>
-          <!--  <dependency>
+            <dependency>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>2.0.5</version>
+                <version>3.6.1</version>
                 <type>maven-plugin</type>
-            </dependency>-->
+            </dependency>
+		<!-- https://mvnrepository.com/artifact/com.ibm.db2/db2jcc_license_cu -->
+		<!-- https://mvnrepository.com/artifact/com.ibm.db2.jcc/db2jcc -->
+
+
+		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
 
         </dependencies>
     </dependencyManagement>
@@ -40,44 +41,33 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <!--<configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
                 <version>3.3</version>
             </plugin>
 
-            <plugin>
-                <version>3.5.3</version>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <configuration>
-                    <changeLogFile>${basedir}/src/main/resources/db/changelog/db.changelog-master.xml
-                    </changeLogFile>
-                    <propertyFile>${basedir}/src/main/resources/liquibase.properties</propertyFile>
-                    <url>${db.url}</url>
-                    <username>${db.username}</username>
-                    <password>${db.password}</password>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.microsoft.sqlserver</groupId>
-                        <artifactId>mssql-jdbc</artifactId>
-                        <version>8.2.2.jre8</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                        <version>3.8.8</version>
-                        <type>maven-plugin</type>
-                    </dependency>
-                </dependencies>
-            </plugin>
+             <plugin>
+			<!-- Build an executable JAR -->
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>3.1.0</version>
+			<configuration>
+				<archive>
+					<manifest>
+						<mainClass>com.elm.liquibase.service.liquibase</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -102,6 +92,51 @@
                     </execution>
                 </executions>
             </plugin>
+		
+		 <plugin>
+                <version>3.5.3</version>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <configuration>
+                    <changeLogFile>${basedir}/src/main/resources/db/changelog/db.changelog-master.xml
+                    </changeLogFile>
+                    <propertyFile>${basedir}/src/main/resources/liquibase.properties</propertyFile>
+                    <url>${db.url}</url>
+                    <username>${db.username}</username>
+                    <password>${db.password}</password>
+			                 <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+			<!--
+                    <dependency>
+                        <groupId>com.microsoft.sqlserver</groupId>
+                        <artifactId>mssql-jdbc</artifactId>
+                        <version>8.2.2.jre8</version>
+                    </dependency>
+			-->
+		<dependency>
+    			<groupId>com.ibm.db2.jcc</groupId>
+    			<artifactId>db2jcc</artifactId>
+    			<version>db2jcc4</version>
+		</dependency>
+                    <dependency>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>3.8.8</version>
+                        <type>maven-plugin</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+		
+		
         </plugins>
     </build>
 
