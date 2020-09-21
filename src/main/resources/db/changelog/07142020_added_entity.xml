@@ -9,7 +9,7 @@
 
     <changeSet author="norah" id="02252020-add-user-table">
         <createTable tableName="user">
-            <column name="id" type="nvarchar(10)"
+            <column name="id" type="INT"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -26,7 +26,7 @@
     </changeSet>
     <changeSet author="norah" id="022wewe52020-add-user-table">
         <createTable tableName="testDb">
-            <column name="id" type="nvarchar(10)"
+            <column name="id" type="INT"
                     autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
