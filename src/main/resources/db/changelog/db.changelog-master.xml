@@ -4,8 +4,4 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
    <include file="08142020_added_table.xml" relativeToChangelogFile="false"/>
    <include file="07142020_added_entity.xml" relativeToChangelogFile="false"/>
-
-  
-
-  
 </databaseChangeLog>
