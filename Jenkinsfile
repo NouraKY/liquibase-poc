@@ -6,6 +6,11 @@ pipeline {
         maven 'apache-maven-3.2.1'
     }
     stages {
+        stage("Generate") {
+        sh "mvn liquibase:generateChangeLog"
+
+
+        }
         stage("Build") {
             steps {
                 script{
@@ -15,6 +20,7 @@ pipeline {
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
                 sh "mvn package"
+
             }
             post {
                 always { echo 'This will always run' }
@@ -28,5 +34,6 @@ pipeline {
             }
 
         }
+
     }
 }
