@@ -7,7 +7,11 @@ pipeline {
     }
     stages {
         stage("Generate") {
+         steps {
+
         sh "mvn liquibase:generateChangeLog"
+
+        }
 
 
         }
