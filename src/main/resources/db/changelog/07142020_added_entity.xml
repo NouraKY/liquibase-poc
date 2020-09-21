@@ -7,7 +7,7 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="norah" id="02252020_add_user_table">
+    <changeSet author="norah" id="07142020_add_user_table">
         <createTable tableName="user1">
             <column name="id" type="bigint"
                     autoIncrement="true">
@@ -24,7 +24,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="norah" id="02252021_add_testUser_table">
+    <changeSet author="norah" id="07142020_add_testUser_table">
         <createTable tableName="testUser1">
             <column name="id" type="bigint"
                     autoIncrement="true">
