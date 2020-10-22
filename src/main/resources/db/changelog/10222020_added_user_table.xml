@@ -25,9 +25,11 @@
         </createTable>
     </changeSet>
 
-
-
-
-
+    <changeSet author="gadah" id="10222020_added_sql_file_address">
+        <sqlFile
+                  path="src/main/resources/db/sql/add_address.sql"
+        />
+        <rollback> drop table address </rollback>
+    </changeSet>
 
 </databaseChangeLog>
