@@ -3,7 +3,7 @@ def dbTime =''
 pipeline {
     agent any
     tools {
-        mvn 'apache-maven-3.6.3'
+        maven 'apache-maven-3.6.3'
     }
     stages {
 //         stage("Generate") {
