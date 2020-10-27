@@ -4,7 +4,7 @@ public class liquibase{
 
     public static void main(String[] args){
 
-        System.out.printlnnn("Testing the app!");
+        System.out.println("Testing the app!");
 
     }
 }
