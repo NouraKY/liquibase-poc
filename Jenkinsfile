@@ -23,15 +23,16 @@ pipeline {
                         //now.set(minute: 0, second: 0)
 
 
-                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                    //dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
                     //def newdate = Date.parse("d/M/yyyy H:m:s", now)
 
                 use(groovy.time.TimeCategory) {
 
-                   incre = new Date(dbTime) + 1.hours
+                   incre = new Date(now) + 1.hours
+                   dbTime=incre.format("yyyy-MM-dd'T'HH:mm:ss")
                     }
 
-                    sh "echo time -3 ${incre} "
+                    sh "echo time -3 ${dbTime} "
                 }
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
