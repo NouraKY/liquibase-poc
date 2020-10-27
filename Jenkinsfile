@@ -1,4 +1,5 @@
 import groovy.time.TimeCategory
+import java.util.TimeZone
 
 def dbTime =''
 def incre =''
@@ -20,20 +21,16 @@ pipeline {
             steps {
                 script{
                    def now = new Date()
-
-                        //Add increment hour by 1
-                        //now.set(minute: 0, second: 0)
-
-
-                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                   tz = TimeZone.getTimeZone("Etc/GMT+3")
+                    //Add increment hour by 1
+                    //now.set(minute: 0, second: 0)
+                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss", timezone=tz)
                     //def newdate = Date.parse("d/M/yyyy H:m:s", now)
-
-                use(TimeCategory) {
-incre = dbTime + 1.hours
-
-                    }
-                  //  dbTime=incre.format("yyyy-MM-dd'T'HH:mm:ss")
-                    sh "echo time ${incre} "
+//                     use(TimeCategory) {
+//                     incre = dbTime + 1.hours
+//
+//                     }
+//                     sh "echo time ${incre} "
                 }
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
