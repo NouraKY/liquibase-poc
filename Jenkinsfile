@@ -16,7 +16,7 @@ pipeline {
         stage("Build") {
             steps {
                 script{
-                   def now = new Date() - 3.hour
+                   def now = new Date()
 
                         //Add increment hour by 1
                         //now.set(minute: 0, second: 0)
