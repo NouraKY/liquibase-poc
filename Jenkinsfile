@@ -42,7 +42,7 @@ pipeline {
                 success { echo 'This will run only if successful' }
                 failure {
                     echo "inside failure"
-                    sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
+                    sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${incre}'"
                    // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
                 }
             }
