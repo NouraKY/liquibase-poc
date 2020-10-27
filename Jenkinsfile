@@ -27,7 +27,7 @@ pipeline {
                 use(groovy.time.TimeCategory) {
 
                     def incre = new Date(dbTime) +1.hours
-
+                    }
 
                     sh "echo time -3 ${incre} "
                 }
@@ -50,3 +50,4 @@ pipeline {
 
     }
 }
+
