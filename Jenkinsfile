@@ -17,7 +17,14 @@ pipeline {
             steps {
                 script{
                    def now = new Date()
-                   now.time -= 3
+                    use(groovy.time.TimeCategory) {
+                        //Add increment hour by 1
+                        def incre = new Date(d) - 3.hours
+                        incre.set(minute: 0, second: 0)
+
+                    }
+
+
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
                     sh "echo time -3 ${dbTime} "
                 }
