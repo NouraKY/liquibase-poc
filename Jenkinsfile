@@ -18,9 +18,8 @@ pipeline {
                 script{
                    def now = new Date()
                    now.time += 3
-                   echo now
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
-                    echo dbTime
+                    sh "echo ${dbTime} "
                 }
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
