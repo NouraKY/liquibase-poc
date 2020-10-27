@@ -22,12 +22,12 @@ pipeline {
                         //now.set(minute: 0, second: 0)
 
 
-                    //dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
-                    def newdate = Date.parse("d/M/yyyy H:m:s", now)
+                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                    //def newdate = Date.parse("d/M/yyyy H:m:s", now)
 
                 use(groovy.time.TimeCategory) {
 
-                    def incre = new Date(newdate) + 1.hours
+                    def incre = new Date(dbTime) + 1.hours
                     }
 
                     sh "echo time -3 ${incre} "
