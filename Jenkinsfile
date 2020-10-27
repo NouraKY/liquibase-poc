@@ -1,5 +1,7 @@
+import groovy.time.TimeCategory
+
 def dbTime =''
- def incre =''
+def incre =''
 
 pipeline {
     agent any
@@ -23,16 +25,15 @@ pipeline {
                         //now.set(minute: 0, second: 0)
 
 
-                    //dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
                     //def newdate = Date.parse("d/M/yyyy H:m:s", now)
 
-                use(groovy.time.TimeCategory) {
-
-                   incre = new Date() + 1.hours
+                use(TimeCategory) {
+incre = dbTime + 1.hours
 
                     }
-                    dbTime=incre.format("yyyy-MM-dd'T'HH:mm:ss")
-                    sh "echo time -3 ${dbTime} "
+                  //  dbTime=incre.format("yyyy-MM-dd'T'HH:mm:ss")
+                    sh "echo time ${incre} "
                 }
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
