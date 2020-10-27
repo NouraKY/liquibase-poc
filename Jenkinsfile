@@ -17,9 +17,9 @@ pipeline {
             steps {
                 script{
                    def now = new Date()
-                   //now.time += 3
+                   now.time -= 3
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
-                    sh "echo ${dbTime} "
+                    sh "echo time -3 ${dbTime} "
                 }
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
