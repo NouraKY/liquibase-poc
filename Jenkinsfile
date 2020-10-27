@@ -21,17 +21,11 @@ pipeline {
             steps {
                 script{
                    def now = new Date()
-                   tz = TimeZone.getTimeZone("Etc/GMT+3")
-                    //Add increment hour by 1
-                    //now.set(minute: 0, second: 0)
-                    dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss", timezone=tz)
-                    //def newdate = Date.parse("d/M/yyyy H:m:s", now)
-//                     use(TimeCategory) {
-//                     incre = dbTime + 1.hours
-//
-//                     }
-//                     sh "echo time ${incre} "
-                }
+                   //now.time += 3
+                   dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('Etc/GMT+3'))
+                   sh "echo ${dbTime} "
+                   }
+
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
                 sh "mvn package"
