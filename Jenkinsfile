@@ -1,4 +1,5 @@
 def dbTime =''
+ def incre =''
 
 pipeline {
     agent any
@@ -24,7 +25,7 @@ pipeline {
 
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
                     //def newdate = Date.parse("d/M/yyyy H:m:s", now)
- def incre
+
                 use(groovy.time.TimeCategory) {
 
                    incre = new Date(dbTime) + 1.hours
