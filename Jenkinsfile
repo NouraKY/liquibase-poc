@@ -25,8 +25,11 @@ pipeline {
 
 
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
+                    def incre = new Date(dbTime) +1.hours
+                    incre.set(minutes: 0 , seconds: 0 )
 
-                    sh "echo time -3 ${dbTime} "
+
+                    sh "echo time -3 ${incre} "
                 }
                 sh "echo the time is: ${dbTime} "
                 echo "inside build step"
