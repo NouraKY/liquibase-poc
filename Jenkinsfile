@@ -24,10 +24,10 @@ pipeline {
 
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
                     //def newdate = Date.parse("d/M/yyyy H:m:s", now)
-
+ def incre
                 use(groovy.time.TimeCategory) {
 
-                    def incre = new Date(dbTime) + 1.hours
+                   incre = new Date(dbTime) + 1.hours
                     }
 
                     sh "echo time -3 ${incre} "
@@ -42,7 +42,7 @@ pipeline {
                 success { echo 'This will run only if successful' }
                 failure {
                     echo "inside failure"
-                    sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
+                    sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${incre}'"
                    // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
                 }
             }
