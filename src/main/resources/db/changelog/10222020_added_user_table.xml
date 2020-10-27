@@ -31,5 +31,4 @@
         />
         <rollback> drop table address </rollback>
     </changeSet>
-
 </databaseChangeLog>
