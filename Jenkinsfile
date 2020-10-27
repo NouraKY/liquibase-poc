@@ -16,7 +16,7 @@ pipeline {
         stage("Build") {
             steps {
                 script{
-                   def now = new Date()
+                   def now = new Date().hours +3
 
                         //Add increment hour by 1
                         //now.set(minute: 0, second: 0)
@@ -24,10 +24,10 @@ pipeline {
 
                     dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss")
 
-                use(groovy.time.TimeCategory) {
-
-                    def incre = new Date(dbTime) +1.hours
-                    }
+//                 use(groovy.time.TimeCategory) {
+//
+//                     def incre = new Date(dbTime) +1.hours
+//                     }
 
                     sh "echo time -3 ${incre} "
                 }
