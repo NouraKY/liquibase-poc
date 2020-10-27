@@ -28,10 +28,10 @@ pipeline {
 
                 use(groovy.time.TimeCategory) {
 
-                   incre = new Date(now) + 1.hours
-                   dbTime=incre.format("yyyy-MM-dd'T'HH:mm:ss")
-                    }
+                   incre = new Date() + 1.hours
 
+                    }
+                    dbTime=incre.format("yyyy-MM-dd'T'HH:mm:ss")
                     sh "echo time -3 ${dbTime} "
                 }
                 sh "echo the time is: ${dbTime} "
