@@ -6,7 +6,7 @@
    <properties>
         <db.url>jdbc:db2://localhost:50000/DEVOPS</db.url>
         <db.username>db2inst1</db.username>
-        <db.password>db2inst1</db.password>
+        <db.password>db2inst2</db.password>
         <java.version>1.8</java.version>
     </properties>
 
