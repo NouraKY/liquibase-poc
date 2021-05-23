@@ -1,0 +1,34 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet author="norah" id="10222020_added_user_table">
+        <createTable tableName="user">
+            <column name="id" type="bigint"
+                    autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="nin" type="nvarchar(10)">
+                <constraints nullable="false" />
+            </column>
+            <column name="first_name" type="nvarchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="nvarchar(50)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="gadah" id="10222020_added_sql_file_address">
+        <sqlFile
+                  path="src/main/resources/db/sql/add_address.sql"
+        />
+        <rollback> drop table address </rollback>
+    </changeSet>
+</databaseChangeLog>
