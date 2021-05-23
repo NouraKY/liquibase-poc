@@ -1,56 +1,59 @@
 import groovy.time.TimeCategory
 import java.util.TimeZone
 
-def dbTime =''
-def incre =''
+def dbTime = ''
+def incre = ''
 
 pipeline {
-    agent any
-    tools {
-        maven 'apache-maven-3.6.3'
+  agent any
+  tools {
+    maven 'apache-maven-3.6.3'
+  }
+  stages {
+    /* stage("Generate") {
+     steps {
+
+    //sh "mvn liquibase:generateChangeLog"
+
     }
-    stages {
-        /* stage("Generate") {
-         steps {
-
-        //sh "mvn liquibase:generateChangeLog"
-
+    } */
+    stage("Build") {
+      steps {
+        script {
+          def now = new Date()
+          //now.time += 3
+          dbTime = now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('GMT'))
+          sh "echo ${dbTime} "
         }
-        } */
-        stage("Build") {
-            steps {
-                script{
-                   def now = new Date()
-                   //now.time += 3
-                   dbTime=now.format("yyyy-MM-dd'T'HH:mm:ss", TimeZone.getTimeZone('GMT'))
-                   sh "echo ${dbTime} "
-                   }
 
-                sh "echo the time is: ${dbTime} "
-                echo "inside build step"
-                sh "mvn package"
+        sh "echo the time is: ${dbTime} "
+        echo "inside build step"
+        sh "mvn package"
 
-            }
-            post {
-                always { echo 'This will always run' }
-                success { echo 'This will run only if successful'}
-                failure {
-                    echo "inside failure"
-                    sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
-                   // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
-                }
-            }//end post
+      }
+      post {
+        always {
+          echo 'This will always run'
+        }
+        success {
+          echo 'This will run only if successful'
+        }
+        failure {
+          echo "inside failure"
+          sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
+          // sh "mvn liquibase:rollback -Dliquibase.rollbackCount=1"
+        }
+      } //end post
 
-        }//end stage build
-         stage("Compile") {
-                    steps {
-                        script{
-                        echo "inside compile step"
-                                        sh "mvn compile"
-                        }
-                        }
-                        }
-
+    } //end stage build
+    stage("Compile") {
+      steps {
+        script {
+          echo "inside compile step"
+          sh "mvn compile"
+        }
+      }
     }
-}
 
+  }
+}

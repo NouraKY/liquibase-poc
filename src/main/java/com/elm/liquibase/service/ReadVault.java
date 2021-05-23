@@ -44,7 +44,7 @@ public class ReadVault {
                     .read("liquibase-poc/dev")
                     .getData().get("testConnection");
             System.out.format( "value key in liquibase-poc/dev is " + value +"\n");
-            LOG.debug("vault value= "+ value);
+            LOG.warn("vault value= "+ value);
 
         } catch(VaultException e) {
             System.out.println("Exception thrown: " + e);
