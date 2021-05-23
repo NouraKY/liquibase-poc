@@ -1,8 +1,6 @@
 package com.elm.liquibase.service;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 import com.bettercloud.vault.*;
@@ -45,6 +43,12 @@ public class ReadVault {
                     .getData().get("testConnection");
             System.out.format( "value key in liquibase-poc/dev is " + value +"\n");
             LOG.warn("vault value= "+ value);
+
+            PrintStream outStream = new PrintStream(new File("outFile.txt"));
+            System.setOut(outStream);
+            System.out.println("vault value= "+ value);
+
+
 
         } catch(VaultException e) {
             System.out.println("Exception thrown: " + e);
