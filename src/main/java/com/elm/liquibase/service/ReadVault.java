@@ -4,14 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 import com.bettercloud.vault.*;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 
 
 public class ReadVault {
 
-    static Logger logger = Logger.getLogger(String.valueOf(ReadVault.class));
+    private static final Logger LOG = LoggerFactory.getLogger(ReadVault.class);
 
     InputStream inputStream;
     public String getPropValues() throws IOException,VaultException {
@@ -43,7 +44,7 @@ public class ReadVault {
                     .read("liquibase-poc/dev")
                     .getData().get("testConnection");
             System.out.format( "value key in liquibase-poc/dev is " + value +"\n");
-            //logger.debug("vault value= "+ value);
+            LOG.debug("vault value= "+ value);
 
         } catch(VaultException e) {
             System.out.println("Exception thrown: " + e);
