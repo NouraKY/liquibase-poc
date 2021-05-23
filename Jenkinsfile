@@ -10,13 +10,13 @@ pipeline {
         maven 'apache-maven-3.6.3'
     }
     stages {
-        stage("Generate") {
+        /* stage("Generate") {
          steps {
 
         //sh "mvn liquibase:generateChangeLog"
 
         }
-        }
+        } */
         stage("Build") {
             steps {
                 script{
