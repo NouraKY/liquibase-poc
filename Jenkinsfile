@@ -33,8 +33,7 @@ pipeline {
             }
             post {
                 always { echo 'This will always run' }
-                success { echo 'This will run only if successful'
-                 sh "mvn compile"}
+                success { echo 'This will run only if successful'}
                 failure {
                     echo "inside failure"
                     sh "mvn liquibase:rollback '-Dliquibase.rollbackDate=${dbTime}'"
@@ -43,9 +42,12 @@ pipeline {
             }//end post
 
         }//end stage build
-         stage("Build") {
+         stage("Compile") {
                     steps {
-                        script{}
+                        script{
+                        echo "inside compile step"
+                                        sh "mvn compile"
+                        }
                         }
                         }
 
