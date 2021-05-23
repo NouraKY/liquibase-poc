@@ -10,7 +10,7 @@ import com.sun.org.slf4j.internal.LoggerFactory;
 
 public class ReadVault {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ReadVault.class);
+    //private static final Logger LOG = LoggerFactory.getLogger(ReadVault.class);
 
     InputStream inputStream;
     public String getPropValues() throws IOException,VaultException {
@@ -42,7 +42,7 @@ public class ReadVault {
                     .read("liquibase-poc/dev")
                     .getData().get("testConnection");
             System.out.format( "value key in liquibase-poc/dev is " + value +"\n");
-            LOG.warn("vault value= "+ value);
+           // LOG.warn("vault value= "+ value);
 
             PrintStream outStream = new PrintStream(new File("outFile.txt"));
             System.setOut(outStream);
